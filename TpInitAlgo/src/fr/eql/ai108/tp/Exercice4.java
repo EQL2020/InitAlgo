@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Exercice4 {
 	public static void main(String[] args) {
+		//Correction exercice 4
 		Scanner scan = new Scanner(System.in);
 		int age;
 		System.out.println("Quel est votre age ?");
