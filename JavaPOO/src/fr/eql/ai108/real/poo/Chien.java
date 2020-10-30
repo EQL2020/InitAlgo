@@ -11,11 +11,14 @@ public class Chien {
 	private boolean estGentil;
 	private char pedigree;
 	
+	//VARIABLE DE CLASSE
+	private static int nbChien;
+	
 	//CONSTRUCTEURS
 
 	//Génération du constructeur vide:  Alt + Shift + S + C
 	public Chien() {
-		super();
+		nbChien++;
 		// TODO Auto-generated constructor stub
 	}
 	//Génération du constructeur surchargé: Alt + Shift + S + O
@@ -28,6 +31,7 @@ public class Chien {
 		this.race = race;
 		this.estGentil = estGentil;
 		this.pedigree = pedigree;
+		nbChien++;
 	}
 	
 	public Chien(String nom, int age, float taille, float poids, String race, char pedigree) {
@@ -38,6 +42,7 @@ public class Chien {
 		this.poids = poids;
 		this.race = race;
 		this.pedigree = pedigree;
+		nbChien++;
 	}
 	//METHODES D'INSTANCE
 	public void aboyer() {
@@ -109,6 +114,9 @@ public class Chien {
 
 	public void setPedigree(char pedigree) {
 		this.pedigree = pedigree;
+	}
+	public static int getNbChien() {
+		return nbChien;
 	}
 
 }

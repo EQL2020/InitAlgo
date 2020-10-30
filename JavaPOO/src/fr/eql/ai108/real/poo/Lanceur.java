@@ -40,6 +40,12 @@ public class Lanceur {
 		//Même chose avec Laica
 		float rapportLaica = laika.rapportTaillePoids();
 		System.out.println(rapportLaica);
+		
+		//Accès à ma variable de classe:
+		System.out.println(ein.getNbChien());
+		System.out.println(laika.getNbChien());
+		System.out.println(Chien.getNbChien());
+	
 	}
 
 }
