@@ -10,6 +10,7 @@ public class Chien {
 	private String race;
 	private boolean estGentil;
 	private char pedigree;
+	private Collier collier;
 	
 	//VARIABLE DE CLASSE
 	private static int nbChien;
@@ -43,6 +44,19 @@ public class Chien {
 		this.race = race;
 		this.pedigree = pedigree;
 		nbChien++;
+	}
+	
+	public Chien(String nom, int age, float taille, float poids, String race, boolean estGentil, char pedigree,
+			Collier collier) {
+		super();
+		this.nom = nom;
+		this.age = age;
+		this.taille = taille;
+		this.poids = poids;
+		this.race = race;
+		this.estGentil = estGentil;
+		this.pedigree = pedigree;
+		this.collier = collier;
 	}
 	//METHODES D'INSTANCE
 	public void aboyer() {
@@ -117,6 +131,12 @@ public class Chien {
 	}
 	public static int getNbChien() {
 		return nbChien;
+	}
+	public Collier getCollier() {
+		return collier;
+	}
+	public void setCollier(Collier collier) {
+		this.collier = collier;
 	}
 
 }
