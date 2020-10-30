@@ -11,6 +11,8 @@ public class Chien {
 	private boolean estGentil;
 	private char pedigree;
 	private Collier collier;
+	private Jouet[] jouets;
+	private GroupeChien groupe;
 	
 	//VARIABLE DE CLASSE
 	private static int nbChien;
@@ -57,6 +59,47 @@ public class Chien {
 		this.estGentil = estGentil;
 		this.pedigree = pedigree;
 		this.collier = collier;
+	}
+	
+	public Chien(String nom, int age, float taille, float poids, String race, boolean estGentil, char pedigree,
+			Collier collier, Jouet[] jouets) {
+		super();
+		this.nom = nom;
+		this.age = age;
+		this.taille = taille;
+		this.poids = poids;
+		this.race = race;
+		this.estGentil = estGentil;
+		this.pedigree = pedigree;
+		this.collier = collier;
+		this.jouets = jouets;
+	}
+	
+	public Chien(String nom, int age, float taille, float poids, String race, boolean estGentil, char pedigree,
+			Jouet[] jouets) {
+		super();
+		this.nom = nom;
+		this.age = age;
+		this.taille = taille;
+		this.poids = poids;
+		this.race = race;
+		this.estGentil = estGentil;
+		this.pedigree = pedigree;
+		this.jouets = jouets;
+	}
+	
+	public Chien(String nom, int age, float taille, float poids, String race, boolean estGentil, char pedigree,
+			Jouet[] jouets, GroupeChien groupe) {
+		super();
+		this.nom = nom;
+		this.age = age;
+		this.taille = taille;
+		this.poids = poids;
+		this.race = race;
+		this.estGentil = estGentil;
+		this.pedigree = pedigree;
+		this.jouets = jouets;
+		this.groupe = groupe;
 	}
 	//METHODES D'INSTANCE
 	public void aboyer() {
@@ -138,5 +181,17 @@ public class Chien {
 	public void setCollier(Collier collier) {
 		this.collier = collier;
 	}
-
+	public Jouet[] getJouets() {
+		return jouets;
+	}
+	public void setJouets(Jouet[] jouets) {
+		this.jouets = jouets;
+	}
+	public GroupeChien getGroupe() {
+		return groupe;
+	}
+	public void setGroupe(GroupeChien groupe) {
+		this.groupe = groupe;
+	}
+	
 }
