@@ -5,6 +5,7 @@ public class Serie {
 	private String titre;
 	private String synopsis;
 	private int nbSaison;
+	private String[] personnages;
 	
 	public Serie() {
 		super();
@@ -22,6 +23,19 @@ public class Serie {
 		System.out.println("Titre: " + titre);
 		System.out.println("Synopsis: " + synopsis);
 		System.out.println("Nombre de saison " + nbSaison);
+	}
+	
+	public String obtenirInitialesPersonnages() {
+		String retour = "";
+		for(int i = 0; i < personnages.length; i++) {
+			String personnage = personnages[i];
+			String[] split = personnage.split(" ");
+			String initiales = String.valueOf(split[0].charAt(0)) 
+					+ "." + String.valueOf(split[1].charAt(0)) + ". \n";
+			retour += initiales;
+		}
+		return retour;
+		
 	}
 	
 	public String getTitre() {
@@ -47,11 +61,13 @@ public class Serie {
 	public void setNbSaison(int nbSaison) {
 		this.nbSaison = nbSaison;
 	}
-	
-	
-	
-	
-	
-	
+
+	public String[] getPersonnages() {
+		return personnages;
+	}
+
+	public void setPersonnages(String[] personnages) {
+		this.personnages = personnages;
+	}
 	
 }

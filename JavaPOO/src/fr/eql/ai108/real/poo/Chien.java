@@ -12,10 +12,15 @@ public class Chien {
 	private char pedigree;
 	
 	//CONSTRUCTEURS
+
+	//Génération du constructeur vide:  Alt + Shift + S + C
 	public Chien() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
+	//Génération du constructeur surchargé: Alt + Shift + S + O
 	public Chien(String nom, int age, float taille, float poids, String race, boolean estGentil, char pedigree) {
+		super();
 		this.nom = nom;
 		this.age = age;
 		this.taille = taille;
@@ -25,6 +30,15 @@ public class Chien {
 		this.pedigree = pedigree;
 	}
 	
+	public Chien(String nom, int age, float taille, float poids, String race, char pedigree) {
+		super();
+		this.nom = nom;
+		this.age = age;
+		this.taille = taille;
+		this.poids = poids;
+		this.race = race;
+		this.pedigree = pedigree;
+	}
 	//METHODES D'INSTANCE
 	public void aboyer() {
 		System.out.println("Ouaf ouaf !!!");
@@ -40,6 +54,8 @@ public class Chien {
 	}
 	
 	//ACCESSEURS ET MUTATEURS
+
+//Génération des getters et setters: Alt + Shift + S + R
 	public String getNom() {
 		return nom;
 	}
@@ -47,7 +63,6 @@ public class Chien {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
 	public int getAge() {
 		return age;
 	}

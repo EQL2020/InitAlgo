@@ -8,6 +8,10 @@ public class Lanceur {
 		Serie tqg = new Serie("The Queen's Gambit", "Ça parle d'échec", 1);
 		got.presenterSerie();
 		tqg.presenterSerie();
+		String[] lesPersonnages = {"Oberyn Martell", "Jon Snow", "Arya Stark"};
+		got.setPersonnages(lesPersonnages);
+		String initiales = got.obtenirInitialesPersonnages();
+		System.out.println(initiales);
 
 	}
 

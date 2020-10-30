@@ -24,6 +24,8 @@ public class Lanceur {
 		//grâce au constructeur surchargé
 		Chien laika = 
 				new Chien("Laïka", 9, 0.9f, 15.42f, "Berger", true, 'L');
+		
+		Chien milou = new Chien("Milou", 9, 0.45f, 6.12f, "Fox Terrier", 'M');
 		//System.out.println(laika.nom);
 		System.out.println(laika.getNom());
 		laika.setNom("Spot");
@@ -34,6 +36,10 @@ public class Lanceur {
 		ein.ramenerLaBalle(42);
 		float rapport = ein.rapportTaillePoids();
 		System.out.println(rapport);
+		
+		//Même chose avec Laica
+		float rapportLaica = laika.rapportTaillePoids();
+		System.out.println(rapportLaica);
 	}
 
 }
