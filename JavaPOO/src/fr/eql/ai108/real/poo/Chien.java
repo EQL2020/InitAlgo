@@ -2,6 +2,7 @@ package fr.eql.ai108.real.poo;
 
 public class Chien {
 	
+	//VARIABLES D'INSTANCE
 	private String nom;
 	private int age;
 	private float taille;
@@ -10,13 +11,11 @@ public class Chien {
 	private boolean estGentil;
 	private char pedigree;
 	
+	//CONSTRUCTEURS
 	public Chien() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Chien(String nom, int age, float taille, float poids, String race, boolean estGentil, char pedigree) {
-		super();
 		this.nom = nom;
 		this.age = age;
 		this.taille = taille;
@@ -25,12 +24,26 @@ public class Chien {
 		this.estGentil = estGentil;
 		this.pedigree = pedigree;
 	}
-	//Accesseur ou getter
+	
+	//METHODES D'INSTANCE
+	public void aboyer() {
+		System.out.println("Ouaf ouaf !!!");
+	}
+	
+	public void ramenerLaBalle(int nbFois) {
+		System.out.println("Je ramène " + nbFois + " la baballe");
+	}
+	
+	public float rapportTaillePoids() {
+		return taille/poids;
+		
+	}
+	
+	//ACCESSEURS ET MUTATEURS
 	public String getNom() {
 		return nom;
 	}
 	
-	//Mutateur ou setter
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
