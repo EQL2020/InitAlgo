@@ -14,6 +14,7 @@ public class Methode2 {
 		System.out.println(uneString);
 		System.out.println("Fin du programme");
 		scan.close();
+		System.exit(0);
 	}
 
 }
