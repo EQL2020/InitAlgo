@@ -17,6 +17,9 @@ public class Chien {
 	//VARIABLE DE CLASSE
 	private static int nbChien;
 	
+	//CONSTANTE
+	private static final int AGE_MAX = 30;
+	
 	//CONSTRUCTEURS
 
 	//Génération du constructeur vide:  Alt + Shift + S + C
@@ -192,6 +195,9 @@ public class Chien {
 	}
 	public void setGroupe(GroupeChien groupe) {
 		this.groupe = groupe;
+	}
+	public static int getAgeMax() {
+		return AGE_MAX;
 	}
 	
 }

@@ -45,7 +45,6 @@ public class Lanceur {
 		System.out.println(ein.getNbChien());
 		System.out.println(laika.getNbChien());
 		System.out.println(Chien.getNbChien());
-	
 	}
 
 }
