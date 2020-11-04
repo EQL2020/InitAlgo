@@ -104,6 +104,62 @@ public class Chien {
 		this.jouets = jouets;
 		this.groupe = groupe;
 	}
+	
+	//REDEFINITION DE LA METHODE toString() (ALT + Shit + S   S)
+	@Override
+	public String toString() {
+		return "Chien [nom=" + nom + ", age=" + age + ", taille=" + taille + ", poids=" + poids + ", race=" + race
+				+ ", estGentil=" + estGentil + ", pedigree=" + pedigree + "]";
+	}
+	
+	//METHODE HASHCODE ET EQUALS (ALT + Shit + S   H)
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + age;
+		result = prime * result + (estGentil ? 1231 : 1237);
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + pedigree;
+		result = prime * result + Float.floatToIntBits(poids);
+		result = prime * result + ((race == null) ? 0 : race.hashCode());
+		result = prime * result + Float.floatToIntBits(taille);
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chien other = (Chien) obj;
+		if (age != other.age)
+			return false;
+		if (estGentil != other.estGentil)
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
+		if (pedigree != other.pedigree)
+			return false;
+		if (Float.floatToIntBits(poids) != Float.floatToIntBits(other.poids))
+			return false;
+		if (race == null) {
+			if (other.race != null)
+				return false;
+		} else if (!race.equals(other.race))
+			return false;
+		if (Float.floatToIntBits(taille) != Float.floatToIntBits(other.taille))
+			return false;
+		return true;
+	}
+	
 	//METHODES D'INSTANCE
 	public void aboyer() {
 		System.out.println("Ouaf ouaf !!!");
@@ -120,7 +176,7 @@ public class Chien {
 	
 	//ACCESSEURS ET MUTATEURS
 
-//Génération des getters et setters: Alt + Shift + S + R
+	//Génération des getters et setters: Alt + Shift + S + R
 	public String getNom() {
 		return nom;
 	}
@@ -199,5 +255,15 @@ public class Chien {
 	public static int getAgeMax() {
 		return AGE_MAX;
 	}
+	//Methode clone (ALT + Shit + S   V)
+	@Override
+	protected Chien clone() throws CloneNotSupportedException {
+		Chien newInstance = new Chien(this.nom,this.age, this.taille, 
+				this.poids, this.race, this.pedigree);
+		return newInstance;
+	}
+	
+	
+	
 	
 }
