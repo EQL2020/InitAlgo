@@ -1,6 +1,6 @@
 package fr.eql.ai108.valref;
 
-public class Personne {
+public class Personne implements Comparable<Personne>{
 	
 	private String nom;
 	private String prenom;
@@ -72,5 +72,17 @@ public class Personne {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	
+	@Override
+	public int compareTo(Personne p) {
+		int i = this.nom.compareTo(p.nom);
+		if(i == 0) {
+			i = this.prenom.compareTo(p.prenom);
+			if(i == 0) {
+				i = this.age - p.age;
+			}
+		}
+		return i;
 	}	
 }
