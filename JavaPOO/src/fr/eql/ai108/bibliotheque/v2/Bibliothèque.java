@@ -1,5 +1,9 @@
 package fr.eql.ai108.bibliotheque.v2;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Bibliothèque {
@@ -9,7 +13,13 @@ public class Bibliothèque {
 		Lecteur lecteur = null;
 		Scanner scan = new Scanner(System.in);
 		String reponse ="";
-		
+		//Initialisation de la Map
+		Map<Categorie, List<Livre>> mapCategorieLivre =
+				new HashMap<Categorie, List<Livre>>();
+		Categorie[] categories = Categorie.values();
+		for (Categorie categorie : categories) {
+			mapCategorieLivre.put(categorie, new ArrayList<Livre>());
+		}
 		System.out.println("*************************");
 		System.out.println("BIENVENUE DANS iBIBLIO");
 		System.out.println("*************************");
@@ -28,19 +38,20 @@ public class Bibliothèque {
 				System.out.println("Quelle est votre adresse?");
 				String adresse = scan.nextLine();
 				lecteur = new Lecteur(nom, prenom, adresse);
+				lecteur.setLivres(new ArrayList<Livre>());
 			}
 		//MENU
 		//Je propose à l'utilisateur d'afficher son identité
 		System.out.println("Que voulez vous faire ?");
 		System.out.println("\t Afficher mon identité (I)");
 		//SI l'utilisateur a enregistré des livre, je lui propose de les afficher
-		if(lecteur.getLivres() != null) {
+		if(lecteur.getLivres().size() > 0) {
 			System.out.println("\t Afficher mes livre (L)");
+			System.out.println("\t Afficher mes livres par catégorie (C)");
 		}
-		//Si l'utilisateur n'a pas enregistré de livres, je lui propose de les enregistrer
-		if(lecteur.getLivres() == null) {
+		//Si l'utilisateur n'a pas enregistré de livres, je lui propose de les enregistrer	
 			System.out.println("\t Enregistrer mes livres (E)");
-		}
+		
 		//Je propose à l'utilisateur de quitter l'application
 		System.out.println("\t Quitter l'application (Q)");
 		reponse = scan.nextLine();
@@ -53,10 +64,8 @@ public class Bibliothèque {
 			System.out.println("Combien voulez vous enregistrer de livres ?");
 			//On connait le nombre de livres que souhaite enregistrer l'utilisateur
 			int nbLivres = Integer.parseInt(scan.nextLine());
-			//On donne à notre utilisateur un tableau de livre de cette taille
-			lecteur.setLivres(new Livre[nbLivres]);
 			//Pour chacun des livres que souhaite ajouter l'utilisateur
-			for(int i = 0; i < lecteur.getLivres().length ; i++) {
+			for(int i = 0; i < nbLivres ; i++) {
 				//On récupère chacun des champs du livre
 				System.out.println("Saisissez les informations du livre numero " + (i + 1));
 				System.out.println("Titre du livre ?");
@@ -68,17 +77,18 @@ public class Bibliothèque {
 				System.out.println("Catégorie du livre ? (Merci de choisir parmi les "
 						+ "catégories suivantes");
 				//On itère sur les différentes valeurs de notre enum pour permettre
-				//à l'utilisateur de choisir sa catégorie
-				Categorie[] categories = Categorie.values();
+				//à l'utilisateur de choisir sa catégorie				
 				for (Categorie categorie : categories) {
 					System.out.println(categorie);
 				}
 				Categorie categorie = Categorie.valueOf(scan.nextLine().toUpperCase());
 				//On instancie un livre avec les valeurs récupérées
 				Livre livre = new Livre(titre, auteur, isbn, categorie);
-				//On ajoute le livre dans le tableau de livre que possède le lecteur
-				//à l'index où l'on est dans la boucle
-				lecteur.getLivres()[i] = livre;
+				//On ajoute le livre dans la liste de livre que possède le lecteur
+				lecteur.getLivres().add(livre);
+				//Après avoir ajouté le livre à la liste de livres du lecteur
+				//Je l'ajoute également dans la HashMap
+				mapCategorieLivre.get(categorie).add(livre);
 			}
 			break;
 		case "L":
@@ -87,7 +97,20 @@ public class Bibliothèque {
 						+ livre.getAuteur() + "\t ISBN: " + livre.getIsbn());
 			}
 			break;
-
+		case "C":
+			System.out.println("De quelle catégorie souhaitez vous afficher les livres ?");
+			for (Categorie categorie : categories) {
+				System.out.println(categorie);
+			}
+			Categorie categorie = Categorie.valueOf(scan.nextLine().toUpperCase());
+			List<Livre> livres = mapCategorieLivre.get(categorie);
+			for (Livre livre : livres) {
+				System.out.println(livre);
+			}
+			if(livres.size() == 0) {
+				System.out.println("Aucun livre dans cette catégorie");
+			}
+			break;
 		default:
 			break;
 		}
