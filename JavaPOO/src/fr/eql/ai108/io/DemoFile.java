@@ -39,7 +39,7 @@ public class DemoFile {
 		}
 		
 		//Création d'un fichier avec un chemin relatif
-		File file3 = new File("file.rel");
+		File file3 = new File("file.titi");
 		try {
 			file3.createNewFile();
 		} catch (IOException e) {
