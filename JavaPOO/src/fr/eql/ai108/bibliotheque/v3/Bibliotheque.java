@@ -6,10 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Bibliothèque {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class Bibliotheque {
+	
+	final static Logger LOGGER = LogManager.getLogger();
+	
 	public static void main(String[] args) {
-
+		LOGGER.info("Démarrage de l'application");
 		Lecteur lecteur = null;
 		Scanner scan = new Scanner(System.in);
 		String reponse ="";
@@ -65,6 +70,7 @@ public class Bibliothèque {
 							lecteur.setLivres(new ArrayList<Livre>());
 						}else {
 							System.out.println("Login et/ou password incorrect(s) !");
+							LOGGER.warn("Tentative de connexion infructueuse");
 						}
 
 					default:
@@ -108,6 +114,7 @@ public class Bibliothèque {
 					}catch (NumberFormatException e) {
 						System.out.println("Erreur: Veuillez saisir un nombre entier !");
 						error = true;
+						LOGGER.error("Erreur de saisie utilisateur pour le nombre de livre");
 					}
 				}while(error);
 				//Pour chacun des livres que souhaite ajouter l'utilisateur
@@ -162,6 +169,7 @@ public class Bibliothèque {
 			}
 		}while(!reponse.equals("Q"));
 		System.out.println("Fin du programme");
+		LOGGER.info("L'application s'est fermée normalement");
 		scan.close();
 	}
 
