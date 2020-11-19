@@ -14,6 +14,13 @@ public class ColorHandler implements EventHandler<ActionEvent>{
 		this.color = color;
 	}
 
+	
+	public ColorHandler() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	@Override
 	public void handle(ActionEvent event) {
 		colorPanel.setStyle("-fx-background-color: " + color);
