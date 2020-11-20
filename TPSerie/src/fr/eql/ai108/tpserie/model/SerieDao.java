@@ -2,8 +2,8 @@ package fr.eql.ai108.tpserie.model;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,19 @@ public class SerieDao {
 				Integer.parseInt(infos[2]), infos[3], infos[4]);
 		return serie;
 	}
-	
+	private String serieToString(Serie serie){
+		StringBuffer sb = new StringBuffer();
+		sb.append(serie.getTitre());
+		sb.append(";");
+		sb.append(serie.getNbSaison());
+		sb.append(";");
+		sb.append(serie.getAnneeDiffusion());
+		sb.append(";");
+		sb.append(serie.getMaisonProd());
+		sb.append(";");
+		sb.append(serie.getEvaluation());
+		return sb.toString();
+	}
 	public List<Serie> getAll(){	
 		//Instancier une liste de série
 		List<Serie> series = new ArrayList<Serie>();
@@ -46,10 +58,53 @@ public class SerieDao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-	
-		//On retourne la liste
-		
+		}	
+		//On retourne la liste		
 		return series;
 	}
+	public void ajouterSerie(Serie serie){
+		String chaine = serieToString(serie);
+		try {
+			FileWriter fw = new FileWriter(file, true);
+			fw.write(chaine + "\r\n");
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void supprimerSerie (String titre){
+		List<Serie> series = getAll();
+		try {
+			FileWriter fw = new FileWriter(file, false);
+			for (Serie serie : series) {
+				if(!serie.getTitre().equals(titre)){
+					fw.write(serieToString(serie)+ "\r\n");
+				}		
+			}
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void mettreAJour (Serie serieUpdated){
+		List<Serie> series = getAll();
+		try {
+			FileWriter fw = new FileWriter(file, false);
+			for (Serie serie : series) {
+				if(!serie.getTitre().equals(serieUpdated.getTitre())){
+					fw.write(serieToString(serie)+ "\r\n");
+				}else{
+					fw.write(serieToString(serieUpdated)+ "\r\n");
+				}				
+			}
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}	
 }

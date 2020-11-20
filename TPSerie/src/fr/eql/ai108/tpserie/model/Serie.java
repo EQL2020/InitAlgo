@@ -4,7 +4,7 @@ public class Serie {
 	
 	private String titre;
 	private int nbSaison;
-	private int anneDiffusion;
+	private int anneeDiffusion;
 	private String maisonProd;
 	private String evaluation;
 	
@@ -12,11 +12,11 @@ public class Serie {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Serie(String titre, int nbSaison, int anneDiffusion, String maisonProd, String evaluation) {
+	public Serie(String titre, int nbSaison, int anneeDiffusion, String maisonProd, String evaluation) {
 		super();
 		this.titre = titre;
 		this.nbSaison = nbSaison;
-		this.anneDiffusion = anneDiffusion;
+		this.anneeDiffusion = anneeDiffusion;
 		this.maisonProd = maisonProd;
 		this.evaluation = evaluation;
 	}
@@ -24,7 +24,7 @@ public class Serie {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + anneDiffusion;
+		result = prime * result + anneeDiffusion;
 		result = prime * result + ((evaluation == null) ? 0 : evaluation.hashCode());
 		result = prime * result + ((maisonProd == null) ? 0 : maisonProd.hashCode());
 		result = prime * result + nbSaison;
@@ -40,7 +40,7 @@ public class Serie {
 		if (getClass() != obj.getClass())
 			return false;
 		Serie other = (Serie) obj;
-		if (anneDiffusion != other.anneDiffusion)
+		if (anneeDiffusion != other.anneeDiffusion)
 			return false;
 		if (evaluation == null) {
 			if (other.evaluation != null)
@@ -63,7 +63,7 @@ public class Serie {
 	}
 	@Override
 	public String toString() {
-		return "Serie [titre=" + titre + ", nbSaison=" + nbSaison + ", anneDiffusion=" + anneDiffusion + ", maisonProd="
+		return "Serie [titre=" + titre + ", nbSaison=" + nbSaison + ", anneDiffusion=" + anneeDiffusion + ", maisonProd="
 				+ maisonProd + ", evaluation=" + evaluation + "]";
 	}
 	public String getTitre() {
@@ -72,8 +72,8 @@ public class Serie {
 	public int getNbSaison() {
 		return nbSaison;
 	}
-	public int getAnneDiffusion() {
-		return anneDiffusion;
+	public int getAnneeDiffusion() {
+		return anneeDiffusion;
 	}
 	public String getMaisonProd() {
 		return maisonProd;
@@ -87,8 +87,8 @@ public class Serie {
 	public void setNbSaison(int nbSaison) {
 		this.nbSaison = nbSaison;
 	}
-	public void setAnneDiffusion(int anneDiffusion) {
-		this.anneDiffusion = anneDiffusion;
+	public void setAnneeDiffusion(int anneDiffusion) {
+		this.anneeDiffusion = anneDiffusion;
 	}
 	public void setMaisonProd(String maisonProd) {
 		this.maisonProd = maisonProd;
